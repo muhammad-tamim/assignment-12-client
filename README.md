@@ -1,14 +1,3 @@
-# Note: Programming Hero Private Repository Access Issue
-Despite multiple attempts, I was unable to connect to the Programming Hero private repository. I discussed this issue with an instructor and shared all the details. Based on their suggestion, I have completed the assignment in a repository created under my own GitHub account.
-
-Please watch to the video below for a visual explanation of the problem I faced:
-
-
-https://github.com/user-attachments/assets/8cce3420-4f75-47ed-8115-e0e170b1fcea
-
----
----
-
 # MedEasy
 ---
 
