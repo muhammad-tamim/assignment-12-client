@@ -140,15 +140,15 @@ const Invoice = () => {
     return (
         <>
             <Helmet><title>MedEasy | Invoice</title></Helmet>
-            <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
-                <div className="bg-white p-4 md:p-8 rounded-lg shadow w-full max-w-3xl">
+            <div className="min-h-screen  flex items-center justify-center py-10 px-4">
+                <div className=" p-4 md:p-8 rounded-lg shadow w-full max-w-3xl">
                     {/* Header */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                         <div className="flex items-center gap-2">
                             <img src="/logo.png" alt="MedEasy" className="w-10 h-10" />
                             <h2 className="text-xl font-bold text-[#25A8D6]">MedEasy</h2>
                         </div>
-                        <div className="text-sm text-gray-500 text-left md:text-right">
+                        <div className="text-sm  text-left md:text-right">
                             <p><strong>Invoice ID:</strong> {payment._id}</p>
                             <p><strong>Transaction ID:</strong> {payment.transactionId}</p>
                         </div>
@@ -156,7 +156,7 @@ const Invoice = () => {
 
                     {/* User Info */}
                     <div className="mb-6 text-sm md:text-base space-y-1">
-                        <p><span className="font-medium">Customer:</span> {payment.userName}</p>
+                        <p><span className="font-medium">User:</span> {payment.userName}</p>
                         <p><span className="font-medium">Email:</span> {payment.userEmail}</p>
                         <p><span className="font-medium">Date & Time:</span> {new Date(payment.date).toLocaleString()}</p>
                     </div>

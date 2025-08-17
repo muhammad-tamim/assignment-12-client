@@ -45,18 +45,18 @@ const Checkout = () => {
         <Container>
             <Helmet><title>MedEasy | Checkout</title></Helmet>
             <div className='min-h-screen py-10 px-4'>
-                <div className='max-w-5xl mx-auto bg-white shadow-md rounded-lg p-8'>
+                <div className='max-w-5xl mx-auto shadow-md rounded-lg p-8'>
                     <h2 className='text-3xl font-bold text-center mb-6 text-[#25A8D6]'>Checkout</h2>
 
                     {/* User Info Summary */}
                     <div className='space-y-3'>
                         <div className='flex justify-between'>
                             <div>
-                                <span className='font-medium text-gray-600'>Customer:</span>
+                                <span className='font-medium '>User:</span>
                                 <p className='text-lg'>{user?.displayName}</p>
                             </div>
                             <div>
-                                <span className='font-medium text-gray-600'>Email:</span>
+                                <span className='font-medium '>Email:</span>
                                 <p className='text-lg'>{user?.email}</p>
                             </div>
                         </div>
