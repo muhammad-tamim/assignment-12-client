@@ -14,7 +14,7 @@ const About = () => {
                 {/* Page header */}
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <Heading title={"About MedEasy"}></Heading>
-                    <p className="text-lg max-w-3xl mx-auto leading-relaxed ">
+                    <p className="text-lg -mt-8 max-w-3xl mx-auto leading-relaxed ">
                         MedEasy is your trusted online pharmacy — making healthcare simple, affordable, and accessible.
                         From prescription medicines to wellness products, we deliver right to your doorstep with care and convenience.
                     </p>

@@ -1,8 +1,6 @@
 import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import { Fade } from "react-awesome-reveal";
-import Container from "../../container/Container";
 import Heading from "../../Elements/Heading";
 
 const Review = () => {
@@ -12,55 +10,55 @@ const Review = () => {
     });
 
     return (
-        <section >
+        <section ref={ref} className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            {/* Heading */}
+            <Heading title={"Our Achievements"} />
 
-            <div
-                ref={ref}
-                className=" py-8 px-5 max-w-6xl mx-auto"
-            >
-                <Heading title={"Our Achievements"}></Heading>
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center mt-8">
+                {/* Patients */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">
+                        {inView ? <CountUp end={1000000} duration={2} separator="," /> : "0"}+
+                    </p>
+                    <p className="text-sm sm:text-base mt-2">Satisfied Patients</p>
+                </div>
 
-                <section className="p-6">
-                    <div className="grid justify-center grid-cols-2 gap-8 text-center lg:grid-cols-3">
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">
-                                {inView ? <CountUp end={1000000} duration={2} separator="," /> : "0"}+
-                            </p>
-                            <p className="text-sm sm:text-base">Satisfied Patients</p>
-                        </div>
+                {/* Medicines */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">
+                        {inView ? <CountUp end={2000} duration={2} separator="," /> : "0"}+
+                    </p>
+                    <p className="text-sm sm:text-base mt-2">Medicines Available</p>
+                </div>
 
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">
-                                {inView ? <CountUp end={2000} duration={2} separator="," /> : "0"}+
-                            </p>
-                            <p className="text-sm sm:text-base">Medicines Available</p>
-                        </div>
+                {/* Orders */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">
+                        {inView ? <CountUp end={8500000} duration={2} separator="," /> : "0"}+
+                    </p>
+                    <p className="text-sm sm:text-base mt-2">Orders Delivered</p>
+                </div>
 
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">
-                                {inView ? <CountUp end={8500000} duration={2} separator="," /> : "0"}+
-                            </p>
-                            <p className="text-sm sm:text-base">Orders Delivered</p>
-                        </div>
+                {/* Rating */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">4.8/5</p>
+                    <p className="text-sm sm:text-base mt-2">Customer Rating</p>
+                </div>
 
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">4.8/5</p>
-                            <p className="text-sm sm:text-base">Customer Rating</p>
-                        </div>
+                {/* Years of Service */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">
+                        {inView ? <CountUp end={10} duration={2} /> : "0"}
+                    </p>
+                    <p className="text-sm sm:text-base mt-2">Years of Service</p>
+                </div>
 
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">
-                                {inView ? <CountUp end={10} duration={2} /> : "0"}
-                            </p>
-                            <p className="text-sm sm:text-base">Years of Service</p>
-                        </div>
-
-                        <div className="flex flex-col justify-center m-2">
-                            <p className="text-4xl font-bold lg:text-6xl ">24/7</p>
-                            <p className="text-sm sm:text-base">Online Support</p>
-                        </div>
-                    </div>
-                </section>
+                {/* Online Support */}
+                <div className="flex flex-col items-center">
+                    <p className="text-3xl sm:text-4xl lg:text-6xl font-bold ">24/7</p>
+                    <p className="text-sm sm:text-base mt-2">Online Support</p>
+                </div>
             </div>
         </section>
     );
