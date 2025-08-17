@@ -3,7 +3,9 @@
 
 ## Website Overview
 
-<img width="1599" height="779" alt="website-screen-shot" src="https://github.com/user-attachments/assets/2ba4e526-0c83-4233-9040-efb1bbce10f3" />
+<img src="src/assets/images/LightModeScreenShot.png" alt="Profile" />
+<img src="src/assets/images/DarkModeScreenShot.png" alt="Profile" />
+
 
 MedEasy is a full-stack pharmacy e-commerce platform designed for customers, sellers, and admins. It provides smooth product browsing, secure authentication, cart and checkout functionality with Stripe payment integration, and comprehensive dashboards for admin and sellers to manage products, users, payments, and advertisements.
 
@@ -24,10 +26,11 @@ MedEasy is a full-stack pharmacy e-commerce platform designed for customers, sel
 🔗 [https://assignment-12-a7eae.web.app/](https://assignment-12-a7eae.web.app/)
 
 ---
-## GitHub Repositories
 
-- Client Side: [https://github.com/tamim-111/ph-assignment-12-client](https://github.com/tamim-111/ph-assignment-12-client)
-- Server Side: [https://github.com/tamim-111/ph-assignment-12-server](https://github.com/tamim-111/ph-assignment-12-server)
+## Github Repositories
+
+- Client Side: [https://github.com/muhammad-tamim/assignment-12-client](https://github.com/muhammad-tamim/assignment-12-client)
+- Server Side: [https://github.com/muhammad-tamim/assignment-12-server](https://github.com/muhammad-tamim/assignment-12-server)
 
 ---
 
