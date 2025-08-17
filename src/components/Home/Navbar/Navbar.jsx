@@ -49,26 +49,12 @@ const Navbar = () => {
                             <NavLink
                                 to='/cart'
                                 className={({ isActive }) =>
-                                    ` ${isActive ? 'text-white font-semibold border-b-1 border-white' : 'hover:text-white/80'
-                                    }`
+                                    `${isActive ? 'underline font-semibold' : ''}`
                                 }
                             >
-                                <FaShoppingCart className="text-xl" />
+                                Cart
                             </NavLink>
 
-                            <details className="dropdown dropdown-end">
-                                <summary className="btn btn-sm btn-ghost bg-transparent ">
-                                    <FaGlobeAmericas className="text-xl" />
-                                </summary>
-                                <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 text-black rounded-box w-28">
-                                    <li>
-                                        <button onClick={() => console.log('Language set to BN')}>বাংলা</button>
-                                    </li>
-                                    <li>
-                                        <button onClick={() => console.log('Language set to EN')}>English</button>
-                                    </li>
-                                </ul>
-                            </details>
 
                             {!user && (
                                 <NavLink
@@ -83,8 +69,8 @@ const Navbar = () => {
                         </div>
 
                         {/* Right Side: Profile Dropdown*/}
-                        <div className='flex gap-4 items-center'>
-                            <button className="btn btn-ghost btn-circle " onClick={handleThemeToggle}>
+                        <div className='flex gap-2 lg:gap-4 items-center'>
+                            <button className="btn btn-ghost btn-circle border border-neutral-200 transition" onClick={handleThemeToggle}>
                                 {theme === 'light' ? '🌙' : '☀️'}
                             </button>
 
