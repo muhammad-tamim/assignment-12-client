@@ -52,7 +52,7 @@ const CustomerDashboardHome = () => {
     }));
 
     return (
-        <div className="min-h-screen px-6 py-10 space-y-10">
+        <div className=" min-h-screen px-6 py-10 space-y-10">
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <h2 className="text-3xl font-bold ">Customer Dashboard</h2>
@@ -78,7 +78,7 @@ const CustomerDashboardHome = () => {
             {/* Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Bar Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
                     <h3 className="text-xl font-semibold mb-4">Order Payment Status</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <BarChart data={[{ name: 'Paid', amount: paidTotal }, { name: 'Pending', amount: pendingTotal }]}>
@@ -93,7 +93,7 @@ const CustomerDashboardHome = () => {
                 </div>
 
                 {/* Pie Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
                     <h3 className="text-xl font-semibold mb-4">Revenue Distribution</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <PieChart>
@@ -118,7 +118,7 @@ const CustomerDashboardHome = () => {
                 </div>
 
                 {/* Line Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300 lg:col-span-2">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300 lg:col-span-2">
                     <h3 className="text-xl font-semibold mb-4">Spending Trend Over Time</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={trendData}>

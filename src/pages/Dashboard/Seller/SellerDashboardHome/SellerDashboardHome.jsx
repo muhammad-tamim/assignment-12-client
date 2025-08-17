@@ -63,11 +63,11 @@ const SellerDashboardHome = () => {
     });
 
     return (
-        <div className="min-h-screen px-6 py-10 bg-gray-50 text-gray-800 space-y-10">
+        <div className="min-h-screen px-6 py-10  space-y-10">
             {/* Page Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <h2 className="text-3xl font-bold text-gray-900">Seller Dashboard</h2>
-                <p className="text-gray-600">Overview of your sales and revenue performance</p>
+                <h2 className="text-3xl font-bold ">Seller Dashboard</h2>
+                <p className="">Overview of your sales and revenue performance</p>
             </div>
 
             {/* Top Stats */}
@@ -87,9 +87,9 @@ const SellerDashboardHome = () => {
             </div>
 
             {/* Charts Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Bar Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
                     <h3 className="text-xl font-semibold mb-4">Revenue Breakdown</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <BarChart data={[{ name: 'Paid', amount: paidTotal }, { name: 'Pending', amount: pendingTotal }]}>
@@ -104,7 +104,7 @@ const SellerDashboardHome = () => {
                 </div>
 
                 {/* Pie Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
                     <h3 className="text-xl font-semibold mb-4">Revenue Distribution</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <PieChart>
@@ -129,7 +129,7 @@ const SellerDashboardHome = () => {
                 </div>
 
                 {/* Line Chart */}
-                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300 lg:col-span-2">
+                <div className="border border-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300 lg:col-span-2">
                     <h3 className="text-xl font-semibold mb-4">Sales Trend Over Time</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={salesTrendData}>
