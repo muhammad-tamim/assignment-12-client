@@ -38,9 +38,6 @@ const Category = () => {
     return (
         <>
             <Heading title={"Explore Medicine Categories"} />
-            <p className="text-center  mb-10 max-w-2xl mx-auto">
-                Browse by category to quickly find the medicines you need.
-            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {categoryWithCounts.map((cat) => (

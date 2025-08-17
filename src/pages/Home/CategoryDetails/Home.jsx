@@ -17,7 +17,9 @@ const Home = () => {
         <>
             <Helmet><title>MedEasy | Home</title></Helmet>
             <div>
-                <Slider></Slider>
+                <Container>
+                    <Slider></Slider>
+                </Container>
 
                 <Container>
                     <VerticalSpace>

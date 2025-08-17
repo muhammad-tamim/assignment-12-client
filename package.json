@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "file-saver": "^2.0.5",
     "firebase": "^11.10.0",
+    "framer-motion": "^12.23.12",
     "react": "^19.1.0",
     "react-awesome-reveal": "^4.3.1",
     "react-countup": "^6.5.3",
