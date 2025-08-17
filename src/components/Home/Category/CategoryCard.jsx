@@ -3,10 +3,10 @@ import { Link } from 'react-router'
 
 const CategoryCard = ({ id, name, image, count }) => {
     return (
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-lg border border-gray-200 transition-transform hover:scale-105 flex flex-col items-center p-6 text-center">
+        <div className="border border-white rounded-2xl shadow hover:shadow-lg transition-transform hover:scale-105 flex flex-col items-center p-6 text-center space-y-4">
 
             {/* Icon / Image */}
-            <div className="w-20 h-20 mb-4 flex items-center justify-center bg-[#e0f7ff] rounded-full">
+            <div className="w-20 h-20 flex items-center justify-center bg-[#e0f7ff] rounded-full">
                 <img
                     src={image}
                     alt={name}
@@ -14,16 +14,15 @@ const CategoryCard = ({ id, name, image, count }) => {
                 />
             </div>
 
-            {/* Text */}
-            <h3 className="text-lg md:text-xl font-semibold text-[#25A8D6] mb-1">{name}</h3>
-            <p className="text-sm text-gray-500 mb-4">{count} medicines</p>
+            {/* Title & Count */}
+            <div className="space-y-1">
+                <h3 className="text-lg md:text-xl font-semibold text-[#25A8D6]">{name}</h3>
+                <p className="text-sm">{count} medicines</p>
+            </div>
 
             {/* Button */}
-            <Link
-                to={`/categoryDetails/${id}`}
-                className="inline-block px-4 py-2 bg-[#25A8D6] text-white text-sm font-medium rounded-full shadow hover:bg-[#1c89b2] transition"
-            >
-                Explore
+            <Link to={`/categoryDetails/${id}`} className="w-full">
+                <button className="btn btn-info w-full mt-2">Explore</button>
             </Link>
         </div>
     )
