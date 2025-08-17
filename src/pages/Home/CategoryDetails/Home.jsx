@@ -7,6 +7,7 @@ import FAQ from '../../../components/Home/FAQ/FAQ';
 import { Helmet } from 'react-helmet'
 import Review from '../../../components/Home/Review/Review';
 import About from '../../../components/Home/About/About';
+import ContactInfo from '../../../components/Home/ContactInfo/ContactInfo';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 <Review></Review>
                 <LatestNews></LatestNews>
                 <FAQ></FAQ>
+                <ContactInfo></ContactInfo>
             </div>
         </>
 
