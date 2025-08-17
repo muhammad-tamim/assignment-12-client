@@ -2,6 +2,8 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
+    PieChart, Pie, Cell,
+    LineChart, Line
 } from 'recharts';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
@@ -17,49 +19,118 @@ const AdminDashboardHome = () => {
     });
 
     if (isLoading) {
-        return <div className="text-center py-20 text-gray-600">Loading sales data...</div>;
+        return (
+            <div className="flex justify-center items-center h-screen text-gray-600 text-lg">
+                Loading sales data...
+            </div>
+        );
     }
 
-    // Calculate totals
+    // Calculate totals from payment items
     const paidTotal = payments
-        .filter(payment => payment.status === 'paid')
-        .reduce((sum, p) => sum + p.amount, 0);
+        .filter(p => p.status === 'paid')
+        .reduce((sum, p) => sum + p.items.reduce((acc, item) => acc + item.subtotal, 0), 0);
 
     const pendingTotal = payments
-        .filter(payment => payment.status === 'pending')
-        .reduce((sum, p) => sum + p.amount, 0);
+        .filter(p => p.status === 'pending')
+        .reduce((sum, p) => sum + p.items.reduce((acc, item) => acc + item.subtotal, 0), 0);
 
-    const chartData = [
-        { name: 'Paid', amount: paidTotal },
-        { name: 'Pending', amount: pendingTotal },
+    const totalTransactions = payments.length;
+
+    // Pie chart data
+    const pieData = [
+        { name: 'Paid', value: paidTotal },
+        { name: 'Pending', value: pendingTotal }
     ];
+    const COLORS = ['#25A8D6', '#FACC15'];
+
+    // Line chart data: trend over time
+    const trendData = payments
+        .map(p => ({
+            date: new Date(p.date).toLocaleDateString(),
+            amount: p.items.reduce((acc, item) => acc + item.subtotal, 0)
+        }))
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
 
     return (
-        <div className="min-h-screen px-6 py-10 bg-gradient-to-t from-[#6BDCF6] to-[#25A8D6] text-white">
-            <h2 className="text-3xl font-bold mb-6">Welcome to Admin Dashboard</h2>
-            <p className="text-lg mb-10">Here's a summary of website sales revenue:</p>
+        <div className="min-h-screen px-6 py-10 bg-gray-50 text-gray-800 space-y-10">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <h2 className="text-3xl font-bold text-gray-900">Admin Dashboard</h2>
+                <p className="text-gray-600">Overview of website revenue and transactions</p>
+            </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg text-gray-800 max-w-4xl mx-auto">
-                <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="amount" fill="#25A8D6" radius={[10, 10, 0, 0]} />
-                    </BarChart>
-                </ResponsiveContainer>
+            {/* Top Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                    <p className="text-gray-500 font-medium">Total Paid Revenue</p>
+                    <p className="text-2xl font-bold text-green-600 mt-2">৳{paidTotal.toLocaleString()}</p>
+                </div>
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                    <p className="text-gray-500 font-medium">Total Pending Revenue</p>
+                    <p className="text-2xl font-bold text-yellow-600 mt-2">৳{pendingTotal.toLocaleString()}</p>
+                </div>
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                    <p className="text-gray-500 font-medium">Total Transactions</p>
+                    <p className="text-2xl font-bold text-blue-600 mt-2">{totalTransactions}</p>
+                </div>
+            </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-4 text-center">
-                    <div className="bg-green-100 rounded-lg p-4">
-                        <p className="text-green-700 font-semibold">Total Paid</p>
-                        <p className="text-2xl font-bold">৳{paidTotal.toLocaleString()}</p>
-                    </div>
-                    <div className="bg-yellow-100 rounded-lg p-4">
-                        <p className="text-yellow-700 font-semibold">Total Pending</p>
-                        <p className="text-2xl font-bold">৳{pendingTotal.toLocaleString()}</p>
-                    </div>
+            {/* Charts */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Bar Chart */}
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                    <h3 className="text-xl font-semibold mb-4">Revenue Breakdown</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                        <BarChart data={[{ name: 'Paid', amount: paidTotal }, { name: 'Pending', amount: pendingTotal }]}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip formatter={(value) => `৳${value.toLocaleString()}`} />
+                            <Legend />
+                            <Bar dataKey="amount" fill="#25A8D6" radius={[10, 10, 0, 0]} />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+
+                {/* Pie Chart */}
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300">
+                    <h3 className="text-xl font-semibold mb-4">Revenue Distribution</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                        <PieChart>
+                            <Pie
+                                data={pieData}
+                                dataKey="value"
+                                nameKey="name"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={80}
+                                fill="#25A8D6"
+                                label
+                            >
+                                {pieData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Tooltip formatter={(value) => `৳${value.toLocaleString()}`} />
+                            <Legend />
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
+
+                {/* Line Chart */}
+                <div className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition duration-300 lg:col-span-2">
+                    <h3 className="text-xl font-semibold mb-4">Sales Trend Over Time</h3>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <LineChart data={trendData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date" />
+                            <YAxis />
+                            <Tooltip formatter={(value) => `৳${value.toLocaleString()}`} />
+                            <Legend />
+                            <Line type="monotone" dataKey="amount" stroke="#25A8D6" strokeWidth={3} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         </div>
