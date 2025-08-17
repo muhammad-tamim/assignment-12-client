@@ -25,7 +25,7 @@ const Review = () => {
                             <div className="grid justify-center grid-cols-2 gap-8 text-center lg:grid-cols-3">
                                 <div className="flex flex-col justify-center m-2">
                                     <p className="text-4xl font-bold lg:text-6xl ">
-                                        {inView ? <CountUp end={5000} duration={2} separator="," /> : "0"}+
+                                        {inView ? <CountUp end={1000000} duration={2} separator="," /> : "0"}+
                                     </p>
                                     <p className="text-sm sm:text-base">Satisfied Patients</p>
                                 </div>
@@ -39,7 +39,7 @@ const Review = () => {
 
                                 <div className="flex flex-col justify-center m-2">
                                     <p className="text-4xl font-bold lg:text-6xl ">
-                                        {inView ? <CountUp end={15000} duration={2} separator="," /> : "0"}+
+                                        {inView ? <CountUp end={8500000} duration={2} separator="," /> : "0"}+
                                     </p>
                                     <p className="text-sm sm:text-base">Orders Delivered</p>
                                 </div>

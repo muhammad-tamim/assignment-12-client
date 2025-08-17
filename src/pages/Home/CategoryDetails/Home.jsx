@@ -6,6 +6,7 @@ import LatestNews from '../../../components/Home/LatestNews/LatestNews';
 import FAQ from '../../../components/Home/FAQ/FAQ';
 import { Helmet } from 'react-helmet'
 import Review from '../../../components/Home/Review/Review';
+import About from '../../../components/Home/About/About';
 
 const Home = () => {
     return (
@@ -15,8 +16,9 @@ const Home = () => {
                 <Slider></Slider>
                 <Category></Category>
                 <DiscountProducts></DiscountProducts>
-                <LatestNews></LatestNews>
+                <About></About>
                 <Review></Review>
+                <LatestNews></LatestNews>
                 <FAQ></FAQ>
             </div>
         </>
