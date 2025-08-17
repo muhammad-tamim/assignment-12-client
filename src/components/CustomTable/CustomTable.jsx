@@ -67,7 +67,7 @@ const CustomTable = ({ columns, data, showPriceSort = false }) => {
 
             {/* Table */}
             <div className='overflow-x-auto'>
-                <table className='table w-full bg-white rounded-xl shadow text-sm'>
+                <table className='table w-full  rounded-xl shadow text-sm'>
                     <thead className='bg-gradient-to-r from-[#6BDCF6] to-[#25A8D6] text-white'>
                         {table.getHeaderGroups().map(headerGroup => (
                             <tr key={headerGroup.id}>
@@ -87,7 +87,7 @@ const CustomTable = ({ columns, data, showPriceSort = false }) => {
                     </thead>
                     <tbody>
                         {table.getRowModel().rows.map(row => (
-                            <tr key={row.id} className='hover:bg-blue-50 transition'>
+                            <tr key={row.id} className='hover:bg-blue-50 hover:text-black transition'>
                                 {row.getVisibleCells().map(cell => (
                                     <td key={cell.id} className='py-3 px-4'>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}

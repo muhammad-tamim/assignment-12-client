@@ -108,7 +108,7 @@ const Cart = () => {
                 <div className='flex items-center gap-2'>
                     <button
                         onClick={() => handleDecrease(row.original)}
-                        className='p-1 rounded bg-gray-200 hover:bg-gray-300'
+                        className='p-1 rounded cursor-pointer'
                         disabled={row.original.quantity === 0}
                     >
                         <FaMinus size={12} />
@@ -116,7 +116,7 @@ const Cart = () => {
                     <span>{row.original.quantity}</span>
                     <button
                         onClick={() => handleIncrease(row.original)}
-                        className='p-1 rounded bg-gray-200 hover:bg-gray-300'
+                        className='p-1 rounded cursor-pointer'
                         disabled={row.original.stock === 0}
                     >
                         <FaPlus size={12} />
@@ -169,7 +169,7 @@ const Cart = () => {
                         </div>
                     </>
                 ) : (
-                    <p className='text-center text-gray-500 text-lg'>Your cart is empty.</p>
+                    <p className='text-center text-lg'>Your cart is empty.</p>
                 )}
             </div>
         </Container>
