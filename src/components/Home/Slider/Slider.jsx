@@ -23,7 +23,7 @@ const Slider = () => {
 
     return (
         <Container>
-            <div className="bg-gradient-to-r from-[#6BDCF6] to-[#25A8D6] rounded-xl shadow-lg py-10 px-6">
+            <div className=" rounded-xl shadow-sm bg-base-100 py-10 px-6">
                 {isLoading ? (
                     <LoadingSpinner />
                 ) : (
@@ -38,29 +38,25 @@ const Slider = () => {
                     >
                         {slides.map((slide) => (
                             <SwiperSlide key={slide._id}>
-                                <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white rounded-lg p-6 shadow-md">
+                                <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 p-4 md:p-6">
                                     {/* Left side: Text */}
-                                    <div className="flex-1 text-center md:text-left space-y-6">
-                                        <h3 className="text-2xl lg:text-5xl font-bold text-[#25A8D6] leading-snug">
+                                    <div className="flex-1 text-center md:text-left space-y-4 md:space-y-6 max-w-xl">
+                                        <h3 className="text-xl sm:text-2xl lg:text-5xl font-bold text-[#25A8D6] leading-snug">
                                             {slide.name}
                                         </h3>
-                                        <p className="text-base lg:text-lg text-gray-700 leading-relaxed">
+                                        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                                             {slide.description || 'No description provided.'}
                                         </p>
 
                                         {/* CTA Buttons */}
-                                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                                            <Link
-                                                to="/shop"
-                                                className="px-6 py-3 bg-[#25A8D6] text-white font-medium rounded-lg shadow hover:bg-[#1c89b2] transition"
-                                            >
-                                                Go to Shop
+                                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                                            <Link to="/shop">
+                                                <button className="btn btn-info w-full sm:w-auto">Go to Shop</button>
                                             </Link>
-                                            <Link
-                                                to="/discounted-products"
-                                                className="px-6 py-3 bg-[#25A8D6] text-white font-medium rounded-lg shadow hover:bg-[#1c89b2] transition"
-                                            >
-                                                Discounted Products
+                                            <Link to="/discounted-products">
+                                                <button className="btn btn-outline btn-info w-full sm:w-auto">
+                                                    Discounted Products
+                                                </button>
                                             </Link>
                                         </div>
                                     </div>
@@ -75,6 +71,9 @@ const Slider = () => {
                                     </div>
                                 </div>
                             </SwiperSlide>
+
+
+
                         ))}
                     </Swiper>
                 )}

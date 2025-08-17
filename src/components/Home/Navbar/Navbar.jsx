@@ -53,7 +53,7 @@ const Navbar = () => {
                         </Link>
 
                         {/* Desktop Nav Links */}
-                        <div className="hidden md:flex items-center gap-6">
+                        <div className="hidden md:flex items-center gap-6 xl:text-xl">
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
