@@ -1,6 +1,5 @@
 import { AiOutlineMenu } from 'react-icons/ai'
-import { FaGlobeAmericas, FaShoppingCart } from 'react-icons/fa'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NavLink, Link } from 'react-router'
 import avatarImg from '../../../assets/images/placeholder.jpg'
 import logo from '../../../assets/images/logo.svg'
@@ -10,65 +9,88 @@ import useAuth from '../../../hooks/useAuth'
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+    const [theme, setTheme] = useState('light')
+    const dropdownRef = useRef(null)
 
-
-    const [theme, setTheme] = useState('light');
-
-    // Apply theme to <html>
+    // Apply theme
     useEffect(() => {
-        document.querySelector('html').setAttribute('data-theme', theme);
-    }, [theme]);
+        document.querySelector('html').setAttribute('data-theme', theme)
+    }, [theme])
 
     const handleThemeToggle = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    }
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false)
+            }
+        }
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside)
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [isOpen])
 
     return (
-        <div className='fixed w-full bg-gradient-to-r from-[#6BDCF6] to-[#25A8D6] z-10 shadow-sm text-white'>
-            <div className='py-4'>
+        <div className="fixed w-full bg-base-100 border-b border-base-300 z-10 shadow-sm">
+            <div className="py-4">
                 <Container>
-                    <div className='flex flex-row items-center justify-between gap-3 md:gap-0'>
-                        <Link to='/' className='text-xl md:text-2xl font-bold flex items-center gap-1'>
-                            <img src={logo} alt='logo' className='w-8 h-8' />
+                    <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
+                        {/* Logo */}
+                        <Link
+                            to="/"
+                            className="text-xl md:text-2xl font-bold flex items-center gap-1"
+                        >
+                            <img src={logo} alt="logo" className="w-8 h-8" />
                             <span>MedEasy</span>
                         </Link>
 
-                        {/* Nav Links */}
-                        <div className='hidden md:flex items-center gap-6'>
-                            <NavLink to='/' className={({ isActive }) => `${isActive ? 'underline font-semibold' : ''}`} >
+                        {/* Desktop Nav Links */}
+                        <div className="hidden md:flex items-center gap-6">
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    `${isActive ? 'underline text-[#25A8D6] font-semibold' : ''}`
+                                }
+                            >
                                 Home
                             </NavLink>
                             <NavLink
-                                to='/shop'
+                                to="/shop"
                                 className={({ isActive }) =>
-                                    `${isActive ? 'underline font-semibold' : ''}`
+                                    `${isActive ? 'underline text-[#25A8D6] font-semibold' : ''}`
                                 }
                             >
                                 Shop
                             </NavLink>
                             <NavLink
-                                to='/discounted-products'
+                                to="/discounted-products"
                                 className={({ isActive }) =>
-                                    `${isActive ? 'underline font-semibold' : ''}`
+                                    `${isActive ? 'underline text-[#25A8D6] font-semibold' : ''}`
                                 }
                             >
                                 Discounted Products
                             </NavLink>
                             <NavLink
-                                to='/cart'
+                                to="/cart"
                                 className={({ isActive }) =>
-                                    `${isActive ? 'underline font-semibold' : ''}`
+                                    `${isActive ? 'underline text-[#25A8D6] font-semibold' : ''}`
                                 }
                             >
                                 Cart
                             </NavLink>
-
-
                             {!user && (
                                 <NavLink
-                                    to='/login'
+                                    to="/login"
                                     className={({ isActive }) =>
-                                        `${isActive ? 'underline font-semibold' : ''}`
+                                        `${isActive ? 'underline text-[#25A8D6] font-semibold' : ''}`
                                     }
                                 >
                                     Join Us
@@ -76,76 +98,117 @@ const Navbar = () => {
                             )}
                         </div>
 
-                        {/* Right Side: Profile Dropdown*/}
-                        <div className='flex gap-2 lg:gap-4 items-center'>
-                            <button className="btn btn-ghost btn-circle border border-neutral-200 transition" onClick={handleThemeToggle}>
+                        {/* Right Side */}
+                        <div className="flex gap-2 lg:gap-4 items-center">
+                            {/* Theme Toggle */}
+                            <button
+                                className="btn btn-ghost btn-circle border border-neutral-200 transition"
+                                onClick={handleThemeToggle}
+                            >
                                 {theme === 'light' ? '🌙' : '☀️'}
                             </button>
 
-                            <div className='relative'>
+                            {/* Profile / Dropdown */}
+                            <div className="relative" ref={dropdownRef}>
                                 <div
                                     onClick={() => setIsOpen(!isOpen)}
-                                    className='p-2 border-[1px] border-neutral-200 flex items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition'
+                                    className="p-2 border border-neutral-200 flex items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition"
                                 >
-                                    <AiOutlineMenu className='text-white' />
+                                    <AiOutlineMenu />
                                     <img
-                                        className='rounded-full'
-                                        referrerPolicy='no-referrer'
+                                        className="rounded-full"
+                                        referrerPolicy="no-referrer"
                                         src={user?.photoURL || avatarImg}
-                                        alt='profile'
-                                        height='30'
-                                        width='30'
+                                        alt="profile"
+                                        height="30"
+                                        width="30"
                                     />
                                 </div>
 
-                                {/* Dropdown Content */}
+                                {/* Dropdown Menu */}
                                 {isOpen && (
-                                    <div className='absolute rounded-xl shadow-md w-[40vw] md:w-[12vw] bg-white overflow-hidden right-0 top-12 text-sm z-50'>
-                                        <div className='flex flex-col cursor-pointer text-black'>
-                                            <div className='md:hidden flex flex-col'>
-                                                <Link
-                                                    to='/'
-                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                    <div className="absolute rounded-xl shadow-md w-[60vw] md:w-[12vw] bg-white overflow-hidden right-0 top-12 text-sm z-50">
+                                        <div className="flex flex-col cursor-pointer text-black">
+                                            {/* Mobile Nav Links */}
+                                            <div className="md:hidden flex flex-col">
+                                                <NavLink
+                                                    to="/"
+                                                    className={({ isActive }) =>
+                                                        `px-4 py-3 hover:bg-neutral-100 transition font-semibold ${isActive
+                                                            ? 'underline text-[#25A8D6]'
+                                                            : ''
+                                                        }`
+                                                    }
+                                                    onClick={() => setIsOpen(false)}
                                                 >
                                                     Home
-                                                </Link>
-                                                <Link
-                                                    to='/shop'
-                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                </NavLink>
+                                                <NavLink
+                                                    to="/shop"
+                                                    className={({ isActive }) =>
+                                                        `px-4 py-3 hover:bg-neutral-100 transition font-semibold ${isActive
+                                                            ? 'underline text-[#25A8D6]'
+                                                            : ''
+                                                        }`
+                                                    }
+                                                    onClick={() => setIsOpen(false)}
                                                 >
                                                     Shop
-                                                </Link>
-                                                <Link
-                                                    to='/discounted-products'
-                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                </NavLink>
+                                                <NavLink
+                                                    to="/discounted-products"
+                                                    className={({ isActive }) =>
+                                                        `px-4 py-3 hover:bg-neutral-100 transition font-semibold ${isActive
+                                                            ? 'underline text-[#25A8D6]'
+                                                            : ''
+                                                        }`
+                                                    }
+                                                    onClick={() => setIsOpen(false)}
                                                 >
                                                     Discounted Products
-                                                </Link>
-                                                <Link
-                                                    to='/cart'
-                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                </NavLink>
+                                                <NavLink
+                                                    to="/cart"
+                                                    className={({ isActive }) =>
+                                                        `px-4 py-3 hover:bg-neutral-100 transition font-semibold ${isActive
+                                                            ? 'underline text-[#25A8D6]'
+                                                            : ''
+                                                        }`
+                                                    }
+                                                    onClick={() => setIsOpen(false)}
                                                 >
                                                     Cart
-                                                </Link>
-                                                {!user && <Link
-                                                    to='/login'
-                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                                                >
-                                                    Join Us
-                                                </Link>}
+                                                </NavLink>
+                                                {!user && (
+                                                    <NavLink
+                                                        to="/login"
+                                                        className={({ isActive }) =>
+                                                            `px-4 py-3 hover:bg-neutral-100 transition font-semibold ${isActive
+                                                                ? 'underline text-[#25A8D6]'
+                                                                : ''
+                                                            }`
+                                                        }
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        Join Us
+                                                    </NavLink>
+                                                )}
                                             </div>
 
+                                            {/* Auth Links */}
                                             {user ? (
                                                 <>
                                                     <Link
-                                                        to='/update-profile'
-                                                        className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                        to="/update-profile"
+                                                        className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                                                        onClick={() => setIsOpen(false)}
                                                     >
                                                         Update Profile
                                                     </Link>
                                                     <Link
-                                                        to='/dashboard'
-                                                        className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                        to="/dashboard"
+                                                        className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                                                        onClick={() => setIsOpen(false)}
                                                     >
                                                         Dashboard
                                                     </Link>
@@ -154,15 +217,13 @@ const Navbar = () => {
                                                             setIsOpen(false)
                                                             logOut()
                                                         }}
-                                                        className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
+                                                        className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
                                                     >
                                                         Logout
                                                     </div>
                                                 </>
                                             ) : (
-                                                <p
-                                                    className='px-4 py-3 text-xs text-red-400'
-                                                >
+                                                <p className="px-4 py-3 text-xs text-red-400">
                                                     Please Login to see below features
                                                 </p>
                                             )}
