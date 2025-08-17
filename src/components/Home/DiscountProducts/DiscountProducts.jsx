@@ -78,18 +78,24 @@ const DiscountProducts = () => {
                         return (
                             <SwiperSlide key={product._id}>
                                 <div className='
-                                    border border-white rounded-2xl shadow hover:shadow-lg transition-transform hover:scale-105 
-                                    p-6 text-center space-y-4 my-5 relative  group  hover:scale-[1.02] overflow-hidden'>
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        className='h-40 w-full object-fill rounded-md mb-3'
-                                    />
-                                    <h3 className='text-lg font-semibold '>{product.name}</h3>
+                                border border-white rounded-2xl shadow hover:shadow-lg transition-transform 
+                                p-6 text-center space-y-4 my-5 relative group hover:scale-[1.02] overflow-hidden
+                                flex flex-col items-center'
+                                >
+                                    {/* Responsive Image */}
+                                    <div className='w-full h-48 md:h-56 lg:h-64 overflow-hidden rounded-md'>
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            className='w-full h-full object-contain '
+                                        />
+                                    </div>
+
+                                    <h3 className='text-lg font-semibold'>{product.name}</h3>
 
                                     <div className='flex items-center gap-2 mt-1'>
                                         <p className='text-[#25A8D6] font-bold text-md'>৳{newPrice}</p>
-                                        <p className='line-through  text-sm'>৳{oldPrice}</p>
+                                        <p className='line-through text-sm'>৳{oldPrice}</p>
                                     </div>
 
                                     <div className='absolute top-3 left-3 bg-gradient-to-r from-[#6BDCF6] to-[#25A8D6] text-white text-xs font-semibold px-2 py-1 rounded-full'>
