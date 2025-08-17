@@ -26,6 +26,7 @@ import AdminRoute from './AdminRoute'
 import SellerRoute from './SellerRoute'
 import CustomerRoute from './CustomerRoute'
 import AllDiscountedProducts from '../pages/AllDiscountedProducts/AllDiscountedProducts'
+import CommonProfile from '../components/Dashboard/Sidebar/CommonProfile/CommonProfile'
 
 export const router = createBrowserRouter([
     {
@@ -82,6 +83,11 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <PrivateRoute><DashboardHome /></PrivateRoute> // Show Role based home for customer/seller/admin
+            },
+            // Common Profile route for all users
+            {
+                path: 'profile',
+                element: <PrivateRoute><CommonProfile /></PrivateRoute>
             },
             // customer Dashboard
             {

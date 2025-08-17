@@ -6,9 +6,9 @@ import supportGirl from '../../../assets/images/banner.jpg'
 const ContactInfo = () => {
     return (
         <Fade duration={3000}>
+            <section className="my-32">
 
-            <h2 className="text-3xl font-bold text-center mb-6 text-[#25A8D6]">Contact MedEasy Pharmacy</h2>
-            <section className="py-16 bg-gray-50 ">
+                <h2 className="text-3xl font-bold text-center mb-6 text-[#25A8D6]">Contact MedEasy Pharmacy</h2>
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-10">
 

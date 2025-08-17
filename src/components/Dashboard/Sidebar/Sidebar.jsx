@@ -7,6 +7,8 @@ import SellerSidebar from './SellerSidebar/SellerSidebar'
 import AdminSidebar from './AdminSidebar/AdminSidebar'
 import useRole from '../../../hooks/useRole'
 import LoadingSpinner from '../../Spinner/LoadingSpinner'
+import SidebarLink from './SidebarLink'
+import { FaUserCircle } from 'react-icons/fa'
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false)
@@ -57,6 +59,13 @@ const Sidebar = () => {
                             {role === 'customer' && <CustomerSidebar />}
                             {role === 'seller' && <SellerSidebar />}
                             {role === 'admin' && <AdminSidebar />}
+                            {/* Profile Link */}
+                            <SidebarLink
+                                to='/dashboard/profile'
+                                icon={<FaUserCircle />}
+                                label='Profile'
+                            />
+
                         </nav>
                     </div>
                 </div>
