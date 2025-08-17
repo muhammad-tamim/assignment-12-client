@@ -10,6 +10,8 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import toast from 'react-hot-toast'
 import LoadingSpinner from '../../Spinner/LoadingSpinner'
 import useAuth from '../../../hooks/useAuth'
+import { Fade } from 'react-awesome-reveal';
+import Heading from '../../Elements/Heading'
 
 const DiscountProducts = () => {
     const { user } = useAuth()
@@ -47,10 +49,10 @@ const DiscountProducts = () => {
     }
 
     return (
-        <Container>
-            <section className='my-32'>
-                <h2 className='text-3xl font-bold text-center mb-6 text-[#25A8D6]'>Discounted Medicines</h2>
+        <>
+            <Fade duration={3000}>
 
+                <Heading title={"Discounted Medicines"}></Heading>
                 {isLoading ? (
                     <LoadingSpinner></LoadingSpinner>
                 ) : (
@@ -76,17 +78,19 @@ const DiscountProducts = () => {
 
                             return (
                                 <SwiperSlide key={product._id}>
-                                    <div className='my-3 relative p-4 group bg-white rounded-xl shadow-md hover:shadow-lg transition-transform hover:scale-[1.02] overflow-hidden border border-[#e0f7ff]'>
+                                    <div className='
+                                    border border-white rounded-2xl shadow hover:shadow-lg transition-transform hover:scale-105 
+                                    p-6 text-center space-y-4 my-5 relative  group  hover:scale-[1.02] overflow-hidden'>
                                         <img
                                             src={product.image}
                                             alt={product.name}
                                             className='h-40 w-full object-fill rounded-md mb-3'
                                         />
-                                        <h3 className='text-lg font-semibold text-gray-800'>{product.name}</h3>
+                                        <h3 className='text-lg font-semibold '>{product.name}</h3>
 
                                         <div className='flex items-center gap-2 mt-1'>
                                             <p className='text-[#25A8D6] font-bold text-md'>৳{newPrice}</p>
-                                            <p className='line-through text-gray-500 text-sm'>৳{oldPrice}</p>
+                                            <p className='line-through  text-sm'>৳{oldPrice}</p>
                                         </div>
 
                                         <div className='absolute top-3 left-3 bg-gradient-to-r from-[#6BDCF6] to-[#25A8D6] text-white text-xs font-semibold px-2 py-1 rounded-full'>
@@ -110,9 +114,10 @@ const DiscountProducts = () => {
                         })}
                     </Swiper>
                 )}
-            </section>
-        </Container>
+            </Fade>
+        </>
     )
+
 }
 
 export default DiscountProducts
