@@ -60,7 +60,8 @@ const LatestNews = () => {
                 <div
                     className="relative flex col-span-12 bg-center bg-no-repeat bg-cover xl:col-span-6 lg:col-span-5 md:col-span-9 min-h-96 rounded-lg overflow-hidden"
                     style={{
-                        backgroundImage: "url('https://shorturl.at/Mst8p')",
+                        backgroundImage: "url('https://shorturl.at/LpSDC')",
+
                     }}
                 >
                     <span className="absolute px-2 py-1 text-xs font-bold uppercase border-b-2 left-6 top-6 text-white border-[#6BDCF6] bg-[#25A8D6]">
