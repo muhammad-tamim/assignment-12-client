@@ -5,6 +5,7 @@ import DiscountProducts from '../../../components/Home/DiscountProducts/Discount
 import LatestNews from '../../../components/Home/LatestNews/LatestNews';
 import FAQ from '../../../components/Home/FAQ/FAQ';
 import { Helmet } from 'react-helmet'
+import Review from '../../../components/Home/Review/Review';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                 <Category></Category>
                 <DiscountProducts></DiscountProducts>
                 <LatestNews></LatestNews>
+                <Review></Review>
                 <FAQ></FAQ>
             </div>
         </>
