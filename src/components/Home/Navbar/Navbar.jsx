@@ -47,6 +47,14 @@ const Navbar = () => {
                                 Shop
                             </NavLink>
                             <NavLink
+                                to='/discounted-products'
+                                className={({ isActive }) =>
+                                    `${isActive ? 'underline font-semibold' : ''}`
+                                }
+                            >
+                                Discounted Products
+                            </NavLink>
+                            <NavLink
                                 to='/cart'
                                 className={({ isActive }) =>
                                     `${isActive ? 'underline font-semibold' : ''}`
@@ -106,6 +114,12 @@ const Navbar = () => {
                                                     className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                                                 >
                                                     Shop
+                                                </Link>
+                                                <Link
+                                                    to='/discounted-products'
+                                                    className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                                >
+                                                    Discounted Products
                                                 </Link>
                                                 <Link
                                                     to='/cart'

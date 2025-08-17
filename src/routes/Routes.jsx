@@ -25,6 +25,7 @@ import PrivateRoute from './PrivateRoute'
 import AdminRoute from './AdminRoute'
 import SellerRoute from './SellerRoute'
 import CustomerRoute from './CustomerRoute'
+import AllDiscountedProducts from '../pages/AllDiscountedProducts/AllDiscountedProducts'
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />
+            },
+            {
+                path: '/discounted-products',
+                element: <AllDiscountedProducts />,
             },
             {
                 path: '/cart',
