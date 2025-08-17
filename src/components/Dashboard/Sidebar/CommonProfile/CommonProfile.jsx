@@ -23,7 +23,7 @@ const CommonProfile = () => {
                 />
 
                 {/* User Name */}
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl text-gray-600 font-bold mb-2">
                     {user.displayName || 'No Name'}
                 </h2>
 

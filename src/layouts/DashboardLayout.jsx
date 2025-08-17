@@ -6,7 +6,7 @@ const DashboardLayout = () => {
     return (
         <>
             <Helmet><title>MedEasy | DashBoard</title></Helmet>
-            <div className='relative min-h-screen md:flex bg-white'>
+            <div className='relative min-h-screen md:flex'>
                 <Sidebar />
                 <div className='flex-1  md:ml-64'>
                     <div className='p-5'>

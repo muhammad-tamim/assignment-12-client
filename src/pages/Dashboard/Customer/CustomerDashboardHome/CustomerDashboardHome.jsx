@@ -52,11 +52,11 @@ const CustomerDashboardHome = () => {
     }));
 
     return (
-        <div className="min-h-screen px-6 py-10 bg-gray-50 text-gray-800 space-y-10">
+        <div className="min-h-screen px-6 py-10 space-y-10">
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <h2 className="text-3xl font-bold text-gray-900">Customer Dashboard</h2>
-                <p className="text-gray-600">Overview of your orders and spending</p>
+                <h2 className="text-3xl font-bold ">Customer Dashboard</h2>
+                <p className="">Overview of your orders and spending</p>
             </div>
 
             {/* Top Stats */}
