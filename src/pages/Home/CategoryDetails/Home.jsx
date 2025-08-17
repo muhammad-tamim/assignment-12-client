@@ -10,6 +10,7 @@ import About from '../../../components/Home/About/About';
 import ContactInfo from '../../../components/Home/ContactInfo/ContactInfo';
 import Container from '../../../components/container/Container';
 import VerticalSpace from '../../../components/container/VerticalSpace';
+import { Fade } from 'react-awesome-reveal';
 
 const Home = () => {
     return (
@@ -20,43 +21,57 @@ const Home = () => {
 
                 <Container>
                     <VerticalSpace>
-                        <Category></Category>
+                        <Fade duration={3000}>
+                            <Category></Category>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <DiscountProducts></DiscountProducts>
+                        <Fade duration={3000}>
+                            <DiscountProducts></DiscountProducts>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <About></About>
+                        <Fade duration={3000}>
+                            <About></About>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <Review></Review>
+                        <Fade duration={3000}>
+                            <Review></Review>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <LatestNews></LatestNews>
+                        <Fade duration={3000}>
+                            <LatestNews></LatestNews>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <FAQ></FAQ>
+                        <Fade duration={3000}>
+                            <FAQ></FAQ>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
                 <Container>
                     <VerticalSpace>
-                        <ContactInfo></ContactInfo>
+                        <Fade duration={3000}>
+                            <ContactInfo></ContactInfo>
+                        </Fade>
                     </VerticalSpace>
                 </Container>
 
