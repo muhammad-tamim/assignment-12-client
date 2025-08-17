@@ -1,6 +1,4 @@
 import React from 'react';
-import { Player } from '@lottiefiles/react-lottie-player';
-import Container from '../../container/Container';
 import Heading from '../../Elements/Heading';
 import SlideInAnimation from '../../animation/SlideInAnimation/SlideInAnimation';
 
@@ -19,8 +17,8 @@ const FAQ = () => {
         <section className="max-w-6xl mx-auto">
             <Heading title="Frequently Asked Questions" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-center">
-                {/* Left Side: FAQ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 items-center">
+
                 <SlideInAnimation direction="left">
                     <div className="space-y-4 max-w-full sm:max-w-lg mx-auto lg:mx-0 s">
                         {faqs.map(({ question, answer }, i) => (
@@ -32,16 +30,6 @@ const FAQ = () => {
                                 <input type="checkbox" />
                                 <div className="collapse-title text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-100 cursor-pointer hover:text-[#25A8D6] transition-colors duration-300 flex items-center justify-between">
                                     {question}
-                                    <svg
-                                        className="w-5 h-5 transition-transform duration-300"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
                                 </div>
                                 <div className="collapse-content text-gray-600 dark:text-gray-300 mt-2 px-2">
                                     <p className="text-sm sm:text-base">{answer}</p>
@@ -51,15 +39,12 @@ const FAQ = () => {
                     </div>
                 </SlideInAnimation>
 
-                {/* Right Side: Lottie Animation */}
                 <SlideInAnimation direction="right">
-                    <div className="flex justify-center items-center">
-                        <Player
-                            autoplay
-                            loop
-                            src="https://assets9.lottiefiles.com/packages/lf20_tutvdkg0.json"
-                            className="lg:h-[800px] lg:w-[700px] xl:h-[1100px] xl:w-[800px] "
-                            style={{ height: 'auto' }}
+                    <div className="flex items-center justify-center">
+                        <img
+                            src="https://play-lh.googleusercontent.com/dIG-IsoCD9BDHJnyfeaP5lGUUcea03Z7p-LvzjKXBodNDpoyl7RoE-p4MUDinZ_tRQk=w2560-h1440-rw"
+                            alt="FAQ Illustration"
+                            className="w-auto h-[400px] md:h-[750px] border border-gray-300"
                         />
                     </div>
                 </SlideInAnimation>
