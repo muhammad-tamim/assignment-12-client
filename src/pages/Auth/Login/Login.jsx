@@ -62,7 +62,7 @@ const Login = () => {
     return (
         <>
             <Helmet><title>MedEasy | LogIn</title></Helmet>
-            <div className='flex justify-center items-center min-h-screen bg-white'>
+            <div className='flex justify-center items-center min-h-screen '>
                 <div className='flex flex-col max-w-md w-full p-6 rounded-lg shadow-md bg-gray-100 text-gray-900'>
                     <h1 className='mb-6 text-4xl font-bold text-center'>Log In</h1>
 

@@ -27,6 +27,13 @@ const Footer = () => {
                                 <Link to="/shop" className="hover:underline">Shop</Link>
                             </li>
                             <li>
+                                <Link
+                                    to="/discounted-products"
+                                >
+                                    Discounted Products
+                                </Link>
+                            </li>
+                            <li>
                                 <Link to="/cart" className="hover:underline">Cart</Link>
                             </li>
                         </ul>
